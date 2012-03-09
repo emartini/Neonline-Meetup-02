@@ -1,0 +1,6 @@
+.page-header
+  %h2
+    New Product
+    
+= simple_form_for @product, :url => products_path, :html => { :class => 'form-horizontal' } do |f|
+  = render :partial => "form", :locals => {:f => f}

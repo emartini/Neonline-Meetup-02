@@ -1,0 +1,35 @@
+.page-header
+  %h2 
+    = @store.name
+    .pull-right
+      = link_to edit_store_path(@store), :class => 'btn' do
+        %i.icon-pencil
+        Edit
+    .clear
+
+= render :partial => "shared/flash_alerts"
+
+%label{:class => "label"}= t("activerecord.attributes.store.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%p= @store.name
+%label{:class => "label"}= t("activerecord.attributes.store.legal_name", :default => t("activerecord.labels.legal_name", :default => "Legal name")) + ":"
+%p= @store.legal_name
+%label{:class => "label"}= t("activerecord.attributes.store.rut", :default => t("activerecord.labels.rut", :default => "Rut")) + ":"
+%p= @store.rut
+%label{:class => "label"}= t("activerecord.attributes.store.description", :default => t("activerecord.labels.description", :default => "Description")) + ":"
+%p= @store.description
+
+.form-actions
+
+  .pull-right  
+    = link_to edit_store_path(@store), :class => 'btn' do
+      %i.icon-pencil
+      Edit
+    
+    = link_to store_path(@store), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-danger' do
+      %i.icon-trash.icon-white
+      Delete
+      
+  .clear
+    
+= link_to stores_path, :class => '' do
+  « Volver

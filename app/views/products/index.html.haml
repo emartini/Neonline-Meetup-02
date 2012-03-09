@@ -1,0 +1,52 @@
+.page-header
+  %h2 
+    Products
+    .pull-right
+      = link_to new_product_path, :class => 'btn' do
+        %i.icon-plus
+        New product
+    .clear
+
+.subnav
+  .pull-right
+    %form.form-inline.form-search
+      %input.search-query.span2{:type=>"text", :placeholder=>"Search..."}
+      %button.btn
+        %i.icon-search
+  %ul.nav.nav-pills
+    %li 
+      =link_to "Filter 1", ""
+    %li
+      =link_to "Filter 2", ""
+    %li
+      =link_to "Filter 3", ""
+
+= render :partial => "shared/flash_alerts"
+  
+%table{:class => "table table-striped table-bordered"}
+  %thead
+    %tr
+      %th ID
+      %th
+        = t("activerecord.attributes.product.title", :default => t("activerecord.labels.title", :default => "Title"))
+      
+      %th
+        = t("activerecord.attributes.product.store_name", :default => t("activerecord.labels.store_name", :default => "Store"))
+        
+      %th
+        = t("activerecord.attributes.product.status", :default => t("activerecord.labels.status", :default => "Status"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.id
+        %td= link_to product.title, product_path(product)
+        %td= product.store_name
+        %td= product.status_name
+        %td= product.created_at
+        %td
+          = link_to "Show", product_path(product)
+          = link_to "Edit", edit_product_path(product)
+          = link_to "Destroy", product_path(product), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+

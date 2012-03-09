@@ -1,0 +1,21 @@
+= render :partial => "shared/flash_alerts"
+
+%fieldset
+
+  = f.input :title, :input_html=>{:class => 'text_field span5'}, :hint => 'Mínimum 6 characters'
+
+  = f.input :description, :input_html=>{:class => 'text_area span5'}
+
+
+  = f.input :cost, :class => 'number_field'
+
+  = f.input :price, :class => 'number_field'
+
+  = f.association :store, :prompt=> "Select the store..."
+  
+  = f.input :status, :collection => Product::ALLOWED_STATES, :prompt=> "Select the status..."
+
+  .form-actions
+    %button{:class => "btn btn-primary", :type => "submit"} Save product
+    or
+    = link_to "Cancel", products_path

@@ -1,0 +1,42 @@
+.page-header
+  %h2 
+    = @product.title
+    .pull-right
+      = link_to edit_product_path(@product), :class => 'btn' do
+        %i.icon-pencil
+        Edit
+    .clear
+
+= render :partial => "shared/flash_alerts"
+
+%label{:class => "label"}= t("activerecord.attributes.product.title", :default => t("activerecord.labels.title", :default => "Title")) + ":"
+%p= @product.title
+%label{:class => "label"}= t("activerecord.attributes.product.description", :default => t("activerecord.labels.description", :default => "Description")) + ":"
+%p= @product.description
+%label{:class => "label"}= t("activerecord.attributes.product.cost", :default => t("activerecord.labels.cost", :default => "Cost")) + ":"
+%p= @product.cost
+%label{:class => "label"}= t("activerecord.attributes.product.price", :default => t("activerecord.labels.price", :default => "Price")) + ":"
+%p= @product.price
+%label{:class => "label"}= t("activerecord.attributes.product.store_name", :default => t("activerecord.labels.store_name", :default => "Store")) + ":"
+%p= @product.store_name
+%label{:class => "label"}= t("activerecord.attributes.product.status", :default => t("activerecord.labels.status", :default => "Status")) + ":"
+%p= @product.status_name
+%label{:class => "label"}= t("activerecord.attributes.product.friendly_url", :default => t("activerecord.labels.friendly_url", :default => "Friendly URL")) + ":"
+%p= @product.friendly_url
+
+.form-actions
+
+  .pull-right  
+    = link_to edit_product_path(@product), :class => 'btn' do
+      %i.icon-pencil
+      Edit
+    
+    = link_to product_path(@product), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-danger' do
+      %i.icon-trash.icon-white
+      Delete
+      
+  .clear
+    
+= link_to products_path, :class => '' do
+  « Volver
+    
